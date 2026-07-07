@@ -37,7 +37,8 @@ const query = async (req, res) => {
 
     res.status(200).json({
         AiResponse: AiResponse,
-        success: true
+        success: true,
+        chat
     })
 
 
@@ -121,4 +122,4 @@ const deleteChat = async (req, res) => {
 }
 
 
-export default { query,getChats,getMessages, deleteChat };
+export default { query, getChats, getMessages, deleteChat };

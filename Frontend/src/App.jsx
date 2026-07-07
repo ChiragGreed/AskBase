@@ -4,11 +4,11 @@ import Protected from './Features/Auth/Components/Protected'
 
 const App = () => {
   return (
-    <div>
+    <main>
       <Protected>
         <Dashboard />
       </Protected>
-    </div>
+    </main>
   )
 }
 
