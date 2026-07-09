@@ -26,12 +26,33 @@ const useChat = () => {
     const sendQueryHandler = async (query, chatId) => {
 
         dispatch(setLoading(true));
-        dispatch(AddNewChatMessage({ content: query, role: 'human' }));
+
+        const humanTime = new Intl.DateTimeFormat('en-IN', {
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        }).format(new Date());
+
+        dispatch(AddNewChatMessage({ content: query, chatId: chatId || null, time: humanTime, role: 'human' }));
+
         try {
 
             const res = await sendQueryApi(query, chatId);
+
             if (res.chat !== null) dispatch(AddNewChat({ title: res.chat?.title, id: res.chat?._id }));
-            dispatch(AddNewChatMessage({ content: res.AiResponse, role: 'ai' }));
+
+            const formattedDate = new Intl.DateTimeFormat('en-IN', {
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            }).format(new Date(res.chat.createdAt));
+
+            dispatch(AddNewChatMessage({ content: res.AiResponse, chatId: chatId || res._id, time: formattedDate, role: 'ai' }));
+            dispatch(setCurrentChat({ title: res.chat.title, id: res.chat._id || chatId }));
         }
         catch (error) {
             dispatch(setError(error.message));

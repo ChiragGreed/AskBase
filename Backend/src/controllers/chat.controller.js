@@ -2,6 +2,7 @@ import chatModel from "../models/chatModel.js";
 import messageModel from "../models/messageModel.js";
 import { HumanMessage, AIMessage } from "@langchain/core/messages";
 import { generateChatTitle, invokeAi } from "../services/ai.service.js";
+import { convertMessagesToMistralMessages } from "@langchain/mistralai";
 
 const query = async (req, res) => {
     const { query, chatId } = req.body;
@@ -26,6 +27,9 @@ const query = async (req, res) => {
     }
 
     // If chatId is provided, continue the existing chat
+    else {
+        chat = await chatModel.findOne({ _id: chatId });
+    }
 
     const message = await messageModel.create({ chatId: chatId || chat._id, content: query, role: 'human' });
 
