@@ -35,7 +35,7 @@ const useChat = () => {
             hour12: true
         }).format(new Date());
 
-        dispatch(AddNewChatMessage({ content: query, chatId: chatId || null, time: humanTime, role: 'human' }));
+        dispatch(AddNewChatMessage({ content: query, chatId: chatId || null, time: humanTime, role: 'user' }));
 
         try {
 

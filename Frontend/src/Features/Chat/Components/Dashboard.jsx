@@ -139,10 +139,10 @@ const Dashboard = () => {
                                 {chatMessages.map((message, idx) => (
                                     < div
                                         key={idx}
-                                        className={`flex ${message.role === "human" ? "justify-end" : "justify-start"}`}
+                                        className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                                     >
                                         <div
-                                            className={`max-w-[85%] rounded-2xl border px-4 py-3 text-md leading-8 shadow-sm ${message.role === "human"
+                                            className={`max-w-[85%] rounded-2xl border px-4 py-3 text-md leading-8 shadow-sm ${message.role === "user"
                                                 ? "border-[#F5FF3A]/30 bg-[#F5FF3A] text-[#0A0A0A]"
                                                 : "border-[#3c3c3c] bg-[#161616] text-[#f5f5f5]"
                                                 }`}
@@ -152,7 +152,7 @@ const Dashboard = () => {
                                                 :
                                                 <p>{message.content}</p>
                                             }
-                                            <p className={`mt-2 text-[13px] uppercase tracking-[0.2em] ${message.role === "human" ? "text-[#0A0A0A]/70" : "text-[#888887]"}`}>
+                                            <p className={`mt-2 text-[13px] uppercase tracking-[0.2em] ${message.role === "user" ? "text-[#0A0A0A]/70" : "text-[#888887]"}`}>
                                                 {message.time}
                                             </p>
                                         </div>

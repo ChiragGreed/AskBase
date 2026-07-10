@@ -1,9 +1,14 @@
 import { AIMessage, HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { ChatMistralAI } from "@langchain/mistralai"
+import { ChatMistralAI } from "@langchain/mistralai";
+import { tool, createAgent } from 'langchain';
+import { internetService } from "./internet.service.js";
+import * as z from 'zod';
+
+
 
 const Geminimodel = new ChatGoogleGenerativeAI({
-    model: "gemini-2.5-flash-lite",
+    model: "gemini-3.1-flash-lite",
     apiKey: process.env.GOOGLE_API_KEY
 });
 
@@ -12,18 +17,40 @@ const Mistralmodel = new ChatMistralAI({
     apiKey: process.env.MISTRAL_API_KEY
 });
 
+
 export const invokeAi = async (messages) => {
 
     const context = messages.map((msg) => {
-        if (msg.role === 'human') {
+        if (msg.role === 'user') {
             return new HumanMessage(msg.content);
         } else if (msg.role === 'ai') {
             return new AIMessage(msg.content);
         }
     }).filter((Boolean));
 
-    const response = await Geminimodel.invoke(context);
-    return (response.text);
+    const internetSearch = tool(
+        async ({ query }) => {
+            return internetService(query);
+        },
+        {
+            name: 'internet_Search',
+            description: 'Use this tool ONLY for current events, real-time data, or queries requiring up-to-date internet information. DO NOT use this tool for general knowledge, history, mathematics, or fictional characters that you already know.',
+            schema: z.object({
+                query: z.string().describe('Search terms to use for finding response on internet.'),
+            })
+        }
+    )
+
+    const systemPrompt = "You are a knowledgeable AI assistant. Always use your internal knowledge base to answer questions about history, science, fictional characters, and general facts. Only invoke the internet_Search tool if the user asks for breaking news, real-time data, or information past your knowledge cutoff date.";
+
+    const geminiAgent = createAgent({
+        model: Geminimodel,
+        tools: [internetSearch],
+        stateModifier: systemPrompt
+    });
+
+    const response = await geminiAgent.invoke({ messages: context });
+    return (response.messages[response.messages.length - 1].text);
 }
 
 export const generateChatTitle = async (title) => {
@@ -33,3 +60,4 @@ export const generateChatTitle = async (title) => {
     ]);
     return (response.text);
 }
+

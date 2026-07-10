@@ -31,7 +31,7 @@ const query = async (req, res) => {
         chat = await chatModel.findOne({ _id: chatId });
     }
 
-    const message = await messageModel.create({ chatId: chatId || chat._id, content: query, role: 'human' });
+    const message = await messageModel.create({ chatId: chatId || chat._id, content: query, role: 'user' });
 
     const allMessages = await messageModel.find({ chatId: chatId ? chatId : chat._id }).sort({ createdAt: 1 });
 
