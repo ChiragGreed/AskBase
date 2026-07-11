@@ -14,6 +14,8 @@ export const chatSlice = createSlice({
             time: null,
             role: null,
         }],
+        chatLoading: false,
+        chatError: false
     },
     reducers: {
         setChats: (state, action) => {
@@ -34,9 +36,15 @@ export const chatSlice = createSlice({
         deleteChat: (state, action) => {
             const index = state.chats.indexOf(action.payload);
             state.chats.splice(index, 1);
+        },
+        setChatLoading: (state, action) => {
+            state.loading = action.payload;
+        },
+        setChatError: (state, action) => {
+            state.error = action.payload;
         }
     }
 })
 
-export const { setChats, AddNewChat, setCurrentChat, setChatMessages, AddNewChatMessage, deleteChat } = chatSlice.actions;
+export const { setChats, AddNewChat, setCurrentChat, setChatMessages, AddNewChatMessage, deleteChat, setChatLoading, setChatError } = chatSlice.actions;
 export default chatSlice.reducer;

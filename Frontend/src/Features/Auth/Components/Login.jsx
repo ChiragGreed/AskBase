@@ -90,17 +90,17 @@ const Login = () => {
     return (
         <div className="w-full min-h-screen flex bg-[#0A0A0A] text-white select-none">
             {/* ── LEFT PANEL ── */}
-            <section className="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 md:p-16 bg-[#0A0A0A] z-10 relative">
-                <div className="flex flex-col items-center w-full max-w-[420px]">
+            <section className="w-full lg:w-1/2 flex flex-col justify-center items-center p-4 md:p-10 bg-[#0A0A0A] z-10 relative">
+                <div className="flex flex-col items-center w-full max-w-[360px]">
                     {/* Logo */}
-                    <div className="flex items-center gap-2.5 mb-40">
-                        <img className="h-35 w-45 m-[-17%] ml-[-10%]" src="../../../../public/images/AppLogo.png" />
-                        <span className="text-5xl font-extrabold tracking-tight text-white">AskBase</span>
+                    <div className="flex items-center gap-2 mb-10">
+                        <img className="h-20 w-24 m-0" src="../../../../public/images/AppLogo.png" alt="App Logo" />
+                        <span className="text-4xl font-extrabold tracking-tight text-white">AskBase</span>
                     </div>
 
                     {/* Heading */}
-                    <h1 className="text-3xl md:text-[32px] font-semibold tracking-tight text-white mb-2 leading-tight">Welcome back!</h1>
-                    <p className="text-base text-[#888887] mb-8 leading-relaxed">Enter your details to log in</p>
+                    <h1 className="text-2xl md:text-[28px] font-semibold tracking-tight text-white mb-1.5 leading-tight">Welcome back!</h1>
+                    <p className="text-sm text-[#888887] mb-6 leading-relaxed">Enter your details to log in</p>
 
                     {/* Form-level error banner */}
                     {formError && (
@@ -111,7 +111,7 @@ const Login = () => {
                     )}
 
                     {/* Form */}
-                    <form className="flex flex-col gap-4 w-full" onSubmit={submitHandler} noValidate>
+                    <form className="flex flex-col gap-3 w-full" onSubmit={submitHandler} noValidate>
                         {/* Email */}
                         <div className="relative flex flex-col gap-1">
                             <input
@@ -120,7 +120,7 @@ const Login = () => {
                                 placeholder="Enter your email"
                                 value={email}
                                 onChange={(e) => handleEmailChange(e.target.value)}
-                                className={`w-full border rounded-xl px-4 py-3.5 text-[15px] text-white placeholder-[#888887] outline-none transition-all duration-200 focus:border-[#F5FF3A] focus:ring-1 focus:ring-[#F5FF3A] ${errors.email ? 'border-[#FF6B6B] focus:border-[#FF6B6B] focus:ring-[#FF6B6B]' : 'border-[#3c3c3c]'
+                                className={`w-full border rounded-xl px-3.5 py-3 text-[14px] text-white placeholder-[#888887] outline-none transition-all duration-200 focus:border-[#F5FF3A] focus:ring-1 focus:ring-[#F5FF3A] ${errors.email ? 'border-[#FF6B6B] focus:border-[#FF6B6B] focus:ring-[#FF6B6B]' : 'border-[#3c3c3c]'
                                     }`}
                                 autoComplete="email"
                             />
@@ -137,7 +137,7 @@ const Login = () => {
                                 placeholder="Enter your password"
                                 value={password}
                                 onChange={(e) => handlePasswordChange(e.target.value)}
-                                className={`w-full border rounded-xl px-4 py-3.5 text-[15px] text-white placeholder-[#888887] outline-none transition-all duration-200 focus:border-[#F5FF3A] focus:ring-1 focus:ring-[#F5FF3A] ${errors.password ? 'border-[#FF6B6B] focus:border-[#FF6B6B] focus:ring-[#FF6B6B]' : 'border-[#3c3c3c]'
+                                className={`w-full border rounded-xl px-3.5 py-3 text-[14px] text-white placeholder-[#888887] outline-none transition-all duration-200 focus:border-[#F5FF3A] focus:ring-1 focus:ring-[#F5FF3A] ${errors.password ? 'border-[#FF6B6B] focus:border-[#FF6B6B] focus:ring-[#FF6B6B]' : 'border-[#3c3c3c]'
                                     }`}
                                 autoComplete="current-password"
                                 style={{ paddingRight: '48px' }}
@@ -158,18 +158,18 @@ const Login = () => {
                         </div>
 
                         {/* Remember / Forgot */}
-                        <div className="flex items-center justify-between py-1">
+                        <div className="flex items-center justify-between py-0.5">
                             <div className="flex items-center gap-2 cursor-pointer">
                                 <input type="checkbox" id="remember-me" className="w-4 h-4 accent-[#F5FF3A] cursor-pointer rounded" />
-                                <label htmlFor="remember-me" className="text-xs font-medium text-[#C8C6C5] tracking-wider cursor-pointer select-none">Keep me logged in</label>
+                                <label htmlFor="remember-me" className="text-[11px] font-medium text-[#C8C6C5] tracking-wider cursor-pointer select-none">Keep me logged in</label>
                             </div>
-                            <a href="#" className="text-xs font-medium text-[#F5FF3A] tracking-wider hover:text-[#ABD600] transition-colors duration-200">Forgot Password?</a>
+                            <a href="#" className="text-[11px] font-medium text-[#F5FF3A] tracking-wider hover:text-[#ABD600] transition-colors duration-200">Forgot Password?</a>
                         </div>
 
                         {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full bg-linear-to-r from-[#F5FF3A] to-[#ABD600] text-[#0A0A0A] border-none rounded-xl py-3.5 font-semibold text-base cursor-pointer flex items-center justify-center gap-2 mt-2 transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_12px_rgba(205,255,0,0.3)] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                            className="w-full bg-linear-to-r from-[#F5FF3A] to-[#ABD600] text-[#0A0A0A] border-none rounded-xl py-3 font-semibold text-sm cursor-pointer flex items-center justify-center gap-2 mt-1 transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_12px_rgba(205,255,0,0.3)] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                             disabled={loading}
                         >
                             {loading ? (
@@ -185,26 +185,26 @@ const Login = () => {
 
 
                     {/* Divider */}
-                    <div className="flex items-center gap-4 mt-8 before:content-[''] before:flex-1 before:h-[1px] before:bg-[#27272A] after:content-[''] after:flex-1 after:h-[1px] after:bg-[#27272A]">
-                        <span className="text-xs font-medium text-[#A1A1AA] tracking-widest uppercase whitespace-nowrap">Or Sign in with</span>
+                    <div className="flex items-center gap-4 mt-6 before:content-[''] before:flex-1 before:h-[1px] before:bg-[#27272A] after:content-[''] after:flex-1 after:h-[1px] after:bg-[#27272A]">
+                        <span className="text-[11px] font-medium text-[#A1A1AA] tracking-widest uppercase whitespace-nowrap">Or Sign in with</span>
                     </div>
 
                     {/* Social buttons */}
-                    <div className="grid grid-cols-2 w-40 gap-4 mt-4">
-                        <button className="flex items-center justify-center h-12 bg-[#1A1A1A] border border-[#27272A] rounded cursor-pointer transition-colors duration-200 hover:bg-[#201f1f]" type="button" aria-label="Sign in with Google">
-                            <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                    <div className="grid grid-cols-2 w-36 gap-3 mt-3">
+                        <button className="flex items-center justify-center h-11 bg-[#1A1A1A] border border-[#27272A] rounded cursor-pointer transition-colors duration-200 hover:bg-[#201f1f]" type="button" aria-label="Sign in with Google">
+                            <svg className="w-4.5 h-4.5 fill-white" viewBox="0 0 24 24">
                                 <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
                             </svg>
                         </button>
-                        <button className="flex items-center justify-center h-12 bg-[#1A1A1A] border border-[#27272A] rounded cursor-pointer transition-colors duration-200 hover:bg-[#201f1f]" type="button" aria-label="Sign in with GitHub">
-                            <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                        <button className="flex items-center justify-center h-11 bg-[#1A1A1A] border border-[#27272A] rounded cursor-pointer transition-colors duration-200 hover:bg-[#201f1f]" type="button" aria-label="Sign in with GitHub">
+                            <svg className="w-4.5 h-4.5 fill-white" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
                             </svg>
                         </button>
                     </div>
 
                     {/* Footer */}
-                    <p className="mt-8 text-center text-sm text-[#888887]">
+                    <p className="mt-6 text-center text-sm text-[#888887]">
                         Don't have an account?{' '}
                         <Link to="/register" className="text-[#F5FF3A] font-medium hover:text-[#ABD600] transition-colors duration-200">Sign up</Link>
                     </p>
@@ -216,17 +216,17 @@ const Login = () => {
                 <img
                     src='../../../../public/images/Login_Hero.png'
                     alt="Futuristic VR experience"
-                    className="absolute top-1/2 left-1/2 w-full h-full max-w-[45vw] max-h-[95vh] object-cover object-bottom rounded-2xl -translate-x-1/2 -translate-y-1/2"
+                    className="absolute top-1/2 left-1/2 w-full h-full max-w-[42vw] max-h-[90vh] object-cover object-bottom rounded-2xl -translate-x-1/2 -translate-y-1/2"
                 />
 
 
                 {/* Floating analytics card */}
-                <div className="absolute bottom-10 right-10 max-w-[300px] bg-[#1A1A1A]/40 backdrop-blur-md border border-[#F5FF3A]/20 rounded-lg p-5 transition-transform duration-500 hover:scale-[1.02] overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#F5FF3A] before:to-transparent before:opacity-50">
-                    <div className="text-lg font-semibold text-white mb-1.5">Scale Up</div>
-                    <div className="text-xs text-[#A1A1AA] leading-relaxed">
+                <div className="absolute bottom-8 right-8 max-w-[260px] bg-[#1A1A1A]/40 backdrop-blur-md border border-[#F5FF3A]/20 rounded-lg p-4 transition-transform duration-500 hover:scale-[1.02] overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#F5FF3A] before:to-transparent before:opacity-50">
+                    <div className="text-base font-semibold text-white mb-1">Scale Up</div>
+                    <div className="text-[11px] text-[#A1A1AA] leading-relaxed">
                         Innovate your business with our AI made to fetch analysis that aligns with your business goals and vision.
                     </div>
-                    <svg className="mt-3.5 h-[60px]" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="mt-2.5 h-[50px]" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M0 55 Q30 50 50 42 T100 30 T150 18 T200 8 T260 2"
                             stroke="#F5FF3A"

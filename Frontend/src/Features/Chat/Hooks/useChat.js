@@ -2,7 +2,7 @@ import socketIoService from "../Services/chat.socket"
 import { deleteChatAPi, getChatsAPi, getMessagesApi, sendQueryApi } from "../Services/chatApi";
 import { useDispatch, useSelector } from 'react-redux';
 import { AddNewChat, AddNewChatMessage, setChatMessages, setChats, setCurrentChat, deleteChat } from "../State/chatSlice";
-import { setError, setLoading } from "../../Auth/State/authSlice";
+import { setChatError, setChatLoading } from "../../Chat/State/chatSlice.js";
 
 const useChat = () => {
 
@@ -25,7 +25,7 @@ const useChat = () => {
 
     const sendQueryHandler = async (query, chatId) => {
 
-        dispatch(setLoading(true));
+        dispatch(setChatLoading(true));
 
         const humanTime = new Intl.DateTimeFormat('en-IN', {
             month: 'long',
@@ -55,10 +55,10 @@ const useChat = () => {
             dispatch(setCurrentChat({ title: res.chat.title, id: res.chat._id || chatId }));
         }
         catch (error) {
-            dispatch(setError(error.message));
+            dispatch(setChatError(error.message));
         }
         finally {
-            dispatch(setLoading(false));
+            dispatch(setChatLoading(false));
         }
 
     }
@@ -72,7 +72,7 @@ const useChat = () => {
             dispatch(setChats(chatsState));
         }
         catch (error) {
-            dispatch(setError(error.message));
+            dispatch(setChatError(error.message));
         }
     }
 
@@ -84,7 +84,7 @@ const useChat = () => {
             dispatch(setCurrentChat(currentChat));
         }
         catch (error) {
-            dispatch(setError(error.message));
+            dispatch(setChatError(error.message));
         }
     }
 
@@ -106,7 +106,7 @@ const useChat = () => {
             dispatch(setChatMessages(messegesState));
         }
         catch (error) {
-            dispatch(setError(error.message));
+            dispatch(setChatError(error.message));
         }
     }
 
@@ -116,7 +116,7 @@ const useChat = () => {
             dispatch(deleteChat(chatId));
         }
         catch (error) {
-            dispatch(setError(error.message));
+            dispatch(setChatError(error.message));
         }
     }
 
