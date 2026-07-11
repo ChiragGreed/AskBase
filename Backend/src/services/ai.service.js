@@ -5,6 +5,7 @@ import { tool, createAgent } from 'langchain';
 import { internetService } from "./internet.service.js";
 import * as z from 'zod';
 import { io } from "./socket.service.js";
+import sendEmail from "./emailService.js";
 
 
 
@@ -29,6 +30,22 @@ export const invokeAi = async (messages) => {
         }
     }).filter((Boolean));
 
+
+    const emailService = tool(
+        async ({ to, subject, html }) => {
+            return sendEmail(to, subject, html);
+        },
+        {
+            name: 'send_email',
+            description: 'Use this tool if the user asks you or a task requires you to to send an email to an email address.',
+            schema: z.object({
+                to: z.string().describe('Email address of the receiver.'),
+                subject: z.string().describe('Subject of the email.'),
+                html: z.string().describe('HTML format of email to send.')
+            })
+        }
+    )
+
     const internetSearch = tool(
         async ({ query }) => {
             return internetService(query);
@@ -42,12 +59,12 @@ export const invokeAi = async (messages) => {
         }
     )
 
-    const systemPrompt = "You are a knowledgeable AI assistant. Always use your internal knowledge base to answer questions about history, science, fictional characters, and general facts. Only invoke the internet_Search tool if the user asks for breaking news, real-time data, or information past your knowledge cutoff date.";
+    const systemPrompt = "You are a knowledgeable AI assistant. Always use your internal knowledge base to answer questions about history, science, fictional characters, and general facts. Only invoke the internet_Search tool if the user asks for breaking news, real-time data, or information past your knowledge cutoff date. Use the send_email tool for sending email to an email address";
 
     const geminiAgent = createAgent({
         model: Geminimodel,
-        // tools: [internetSearch],
-        // stateModifier: systemPrompt
+        tools: [internetSearch, emailService],
+        stateModifier: systemPrompt
     });
 
     const response = await geminiAgent.streamEvents({ messages: context });
@@ -60,7 +77,6 @@ export const invokeAi = async (messages) => {
         }
     }
 
-    console.log(finalResponse);
     return (finalResponse);
 }
 
