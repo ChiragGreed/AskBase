@@ -6,7 +6,7 @@ const initializeSocketio = (httpServer) => {
 
     io = new Server(httpServer, {
         cors: {
-            origin: 'http://localhost:5173',
+            origin: 'https://ask-base-roan.vercel.app',
             credentials: true
         }
     })
