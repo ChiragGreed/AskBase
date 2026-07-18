@@ -17,8 +17,8 @@ const ChatFooter = ({ setDisplayedText, sendQueryHandler ,currentChat}) => {
 
     return (
         <>
-            < footer className="shrink-0 border-t border-[#1C1C1E] px-4 py-5 sm:px-8 lg:px-12 bg-gradient-to-t from-[#0A0A0A] to-[#0A0A0A]/95" >
-                <div className="mx-auto max-w-[800px] flex flex-col gap-3">
+            <footer className="shrink-0 border-t border-[#1C1C1E] px-3 py-3 sm:px-6 sm:py-4 lg:px-12 bg-gradient-to-t from-[#0A0A0A] to-[#0A0A0A]/95">
+                <div className="mx-auto max-w-[800px] flex flex-col gap-2.5 sm:gap-3">
 
                     {/* Quick Prompt Pills */}
                     <div className="flex flex-wrap gap-2">
@@ -41,14 +41,14 @@ const ChatFooter = ({ setDisplayedText, sendQueryHandler ,currentChat}) => {
                                 value={draft}
                                 onChange={(event) => setDraft(event.target.value)}
                                 placeholder="Ask anything..."
-                                className="flex-1 border-none bg-transparent px-4 py-3 text-sm text-white outline-none placeholder:text-[#71717A] caret-[#F59E0B]"
+                                className="flex-1 min-w-0 border-none bg-transparent px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white outline-none placeholder:text-[#71717A] caret-[#F59E0B]"
                             />
                             <button
                                 type="submit"
-                                className="bg-linear-to-r from-[#F5FF3A] to-[#ABD600] p-3 rounded-xl text-black transition-all duration-300 hover:shadow-[0_0_15px_rgba(171,214,0,0.4)] active:scale-95 shrink-0"
+                                className="bg-linear-to-r from-[#F5FF3A] to-[#ABD600] p-2.5 sm:p-3 rounded-xl text-black transition-all duration-300 hover:shadow-[0_0_15px_rgba(171,214,0,0.4)] active:scale-95 shrink-0"
                                 aria-label="Send message"
                             >
-                                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                                <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M5 12h14" strokeLinecap="round" />
                                     <path d="m12 5 7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>

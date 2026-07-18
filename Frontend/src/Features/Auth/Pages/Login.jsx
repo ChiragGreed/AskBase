@@ -93,8 +93,8 @@ const Login = () => {
             <section className="w-full lg:w-1/2 flex flex-col justify-center items-center p-4 md:p-10 bg-[#0A0A0A] z-10 relative">
                 <div className="flex flex-col items-center w-full max-w-[360px]">
                     {/* Logo */}
-                    <div className="flex items-center gap-2 mb-10">
-                        <img className="h-20 w-24 m-0" src="images/AppLogo.png" alt="App Logo" />
+                    <div className="flex items-center mb-10">
+                        <img className="h-20 w-24 m-0 -mr-8" src="images/AppLogo.png" alt="App Logo" />
                         <span className="text-4xl font-extrabold tracking-tight text-white">AskBase</span>
                     </div>
 

@@ -42,12 +42,12 @@ const ChatSection = ({ finishAnimationHandler, displayedText, setDisplayedText }
             >
                 <div className="mx-auto max-w-[800px] flex flex-col gap-8 min-h-full">
                     {chatMessages.length === 0 || (chatMessages.length === 1 && chatMessages[0].role === null) ? (
-                        <div className="flex-1 flex flex-col items-center justify-end pb-49  translate-x-[-12%] sm:pb-49 opacity-90 animate-in fade-in duration-700">
-                            <div className="flex items-center gap-2">
-                                <img className="h-30 w-38 -mr-12 drop-shadow-2xl" src="/images/AppLogo.png" alt="AskBase logo" />
-                                <h1 className="text-6xl sm:text-8xl font-thin text-white tracking-tight drop-shadow-lg">AskBase</h1>
+                        <div className="flex-1 flex flex-col items-center justify-end px-2 pb-10 sm:pb-16 md:pb-20 opacity-90 animate-in fade-in duration-700">
+                            <div className="flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:gap-3">
+                                <img className="h-20 w-20 sm:h-28 sm:w-28 md:h-32 md:w-32 drop-shadow-2xl" src="/images/AppLogo.png" alt="AskBase logo" />
+                                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-thin text-white tracking-tight drop-shadow-lg">AskBase</h1>
                             </div>
-                            <p className="text-[14px] mt-4 font-thin uppercase tracking-[0.2em] text-[#A1A1AA] drop-shadow-md">AI Assistant</p>
+                            <p className="mt-3 text-[11px] sm:text-[13px] md:text-[14px] font-thin uppercase tracking-[0.2em] text-[#A1A1AA] drop-shadow-md">AI Assistant</p>
                         </div>
                     ) : (
                         chatMessages.map((message, idx) => (
